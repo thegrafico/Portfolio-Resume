@@ -16,10 +16,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //Importing routes
-var resume = require('./routes/resume');
+var resume      = require('./routes/resume'),
+    portfolio   = require('./routes/portfolio');
+
 
 //using routes
-app.use('/resume', resume)
+app.use('/', portfolio);
+app.use('/resume', resume);
+
+
 //=====Default route=====
 app.get('*', (req, res) =>{
     res.send('Page not Found');

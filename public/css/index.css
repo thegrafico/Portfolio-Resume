@@ -1,12 +1,6 @@
 @media screen and (max-width:720px) {
 
-  *{
-    font-family: 'Inconsolata', monospace;
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
-
-  }
+ 
   .container{
     background-color: #292a2a;
     width: 100%;
@@ -197,13 +191,7 @@
 
 @media screen and (max-width:1200px) {
 
-  *{
-    font-family: 'Inconsolata', monospace;
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
 
-  }
 
   .container{
     background-color: #292a2a;
@@ -413,12 +401,6 @@
 
 @media screen and (min-width:1201px) {
 
-    *{
-      font-family: 'Inconsolata', monospace;
-      padding: 0px;
-      margin: 0px;
-      box-sizing: border-box;
-    }
     .show_only_in_Phone{
       display: none;
     }
@@ -753,4 +735,19 @@
     .menuForPhone2{
       display: none;
     }
+}
+
+*{
+  font-family: 'Inconsolata', monospace;
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+
+}
+
+#forPhone a{
+  background: transparent;
+  color: white;
+  font-size: 1.1em;
+  text-decoration: none;
 }

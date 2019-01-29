@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/homeCss.css">
+
+</head>
+<body>
+
+	<div class="animation">
+		<div>
+		</div>
+		<div>
+		</div>
+		<div>
+		</div>
+		<div>
+		</div>
+	</div>
+	<div class="animation">
+		<div>
+		</div>
+		<div>
+		</div>
+		<div>
+		</div>
+		<div>
+		</div>
+	</div>
+	<div class="animation">
+		<div>
+		</div>
+		<div>
+		</div>
+		<div>
+		</div>
+		<div>
+		</div>
+	</div>
+	<div class="animation">
+		<div>
+		</div>
+		<div>
+		</div>
+		<div>
+		</div>
+		<div>
+		</div>
+	</div>
+
+	<!-- NAVBAR -->
+	{{> navbar}}
+
+  <!--LOG IN-->
+	<div class="caja-Principal tabcontent" id="login_enter">
+  	<div class="header">
+      <h1>Welcome to my Portfolio</h1>
+      <p>Here you can see everything I do!</p>
+      <p>
+        <form action="#" method="GET" class="form-inline">
+            <div class="form-group">
+                <input type="text" name="search" placeholder="Search" class="form-control">
+                <input type="submit" value="Search" class="btn btn-default">
+            </div>
+        </form>
+      </p>
+    </div>
+
+    <div class="Porfolio">
+      <div>
+        <h1>GITHUB</h1>
+      </div>
+
+      <div>
+        <h1>Certifications</h1>
+      </div>
+
+      <div>
+        <h1>Proyects</h1>
+      </div>
+    </div>
+
+  </div>
+
+	<script type="text/javascript">
+  var showInten = 1;
+  function showMenu(){
+    var menu = document.getElementById('forPhone');
+    if(showInten == 1){
+      menu.style.cssText = "display: inline-block; background-color:  rgba(0, 0, 0, 0.9);height: 100px; margin-left: 15%";
+			showInten = 3;
+		}else if( showInten === 2){
+      menu.style.cssText = "display: none";
+    }
+		showInten--;
+  }
+  </script>
+</body>
+</html>

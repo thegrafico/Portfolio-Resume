@@ -6,9 +6,8 @@
       background-color: #292a2a;
       padding: 0;
     }
-    body {
-      font-family: "Times New Roman", Times, serif;
-    }
+    
+   
 
     /* Elementos Principales */
     .caja-Principal {
@@ -153,16 +152,6 @@
 }
 
 @media  screen and (min-width:1201px) {
-
-  * {
-    box-sizing: border-box;
-    margin: 0px;
-    background-color: #292a2a;
-    padding: 0;
-  }
-  body {
-    font-family: "Times New Roman", Times, serif;
-  }
 
   /* Elementos Principales */
   .caja-Principal {
@@ -386,4 +375,19 @@
   .menuForPhone{
     display: none;
   }
+}
+
+* {
+  font-family: 'Inconsolata', monospace;
+  box-sizing: border-box;
+  margin: 0px;
+  background-color: #292a2a;
+  padding: 0;
+}
+
+#forPhone a{
+  background: transparent;
+  color: white;
+  font-size: 0.9em;
+  text-decoration: none;
 }

@@ -2,9 +2,12 @@
 var express = require('express');
 var router = express.Router();
 
+const resumeUrl = './resume';
 
 router.get('/', (req, res) =>{
-    res.send('HOLA RESUME')
+    let parms = {urlHome: '/', urlResume: '/resume', class_header: 'header',  active_p: '', active_r: 'active'}
+
+    res.render(resumeUrl, parms);
 })
 
 
