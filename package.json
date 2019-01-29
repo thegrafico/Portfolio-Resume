@@ -9,8 +9,9 @@
   "author": "Raul Pichardo",
   "license": "ISC",
   "dependencies": {
-    "body-parse": "^0.1.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "hbs": "^4.0.1",
     "path": "^0.12.7"
   }
