@@ -2,12 +2,6 @@
 var mongoose = require("mongoose");
 
 
-//Skill
-var skillData = new mongoose.Schema({
-    sk: [{skill: String, percent: Number}]
-})
-
-
 //estructura
 var dataSchema = new mongoose.Schema({
 	author: {
@@ -23,9 +17,7 @@ var dataSchema = new mongoose.Schema({
 		   ref: "Experience"
 		}
 	 ],
-    introduction: String,
-    education: [{where:  String, geoLocation: String, title: String}],
-    favClass: []
+    introduction: String
 });
 
 //our model to manipulate the DB
