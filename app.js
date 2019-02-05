@@ -4,12 +4,24 @@ const express           = require('express'),
         bodyParser      = require('body-parser'),
         passport        = require('passport'),
         LocalStrategy   = require('passport-local'),
-        User            = require('models/user.js')
+        User            = require('./models/user.js')
+        mongoose 		= require("mongoose"), 
         hbs             = require('hbs');
-
 //App
 var app = express();
 
+
+//===================DB connection===================================
+const dbName = 'Portfolio';
+const url = `mongodb://localhost:27017/${dbName}`;
+
+mongoose.connect(url, {useNewUrlParser: true});
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+   console.log("Connected")
+  });
+//============================================================
 //Setup HBS
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials/')
@@ -54,6 +66,16 @@ var resume      = require('./routes/resume'),
 app.use('/', portfolio);
 app.use('/resume', resume);
 
+var newUser = new User({
+    username: 'thegrafico',
+    password: '123'
+});
+
+newUser.save((err, user)=>{
+    if(err) return console.log(err)
+
+    console.log(`Added User: ${user}`  )
+});
 
 //=====Default route=====
 app.get('*', (req, res) =>{
