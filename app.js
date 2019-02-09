@@ -4,7 +4,9 @@ const express           = require('express'),
         bodyParser      = require('body-parser'),
         passport        = require('passport'),
         LocalStrategy   = require('passport-local'),
-        User            = require('./models/user.js')
+        User            = require('./models/user'),
+        Data            = require('./models/data'),
+        Expe            = require('./models/experencie'),
         mongoose 		= require("mongoose"), 
         hbs             = require('hbs');
 //App
@@ -66,16 +68,62 @@ var resume      = require('./routes/resume'),
 app.use('/', portfolio);
 app.use('/resume', resume);
 
-var newUser = new User({
-    username: 'thegrafico',
-    password: '123'
-});
+//--------------Addind new user----------------------
+// var newUser = new User({
+//     username: 'thegrafico',
+//     password: '123456'
+// });
 
-newUser.save((err, user)=>{
-    if(err) return console.log(err)
+// newUser.save((err, user)=>{
+//     if(err) return console.log(err)
 
-    console.log(`Added User: ${user}`  )
+//     console.log(`Added User: ${user}`  )
+// });
+var author = {
+    id: '5c5ef04613379d493a1fb770',
+    username:'thegrafico'
+}
+Expe.create({
+    experience: 'Test1',
+    geoLocation: 'Where i working',
+    positionJob: 'Mannager',
+    contact: '787-377-6957',
+    description:'Tes2',
+    author
+}, (error,  expe)=>{
+
+    if(error) return console.log(error);
+    
+    var newData = new Data({
+        author,
+        introduction: 'HOLA SOY RAUL',
+        experience: expe
+    })
+    newData.save((err, dataUser) =>{
+        if (err) return console.log(err);
+    
+        console.log('Added Data: ' + dataUser)
+    });
+    
 });
+// dExpe.save((err, dataUser) =>{
+//         if (err) return console.log(err);
+//         console.log('Added Data: ' + dataUser)
+//     });
+// var newData = new Data({
+//     author,
+//     introduction: 'HOLA SOY RAUL',
+//     experience: dExpe
+// })
+
+// newData.experience.push(dExpe);
+
+// newData.save((err, dataUser) =>{
+//     if (err) return console.log(err);
+
+//     console.log('Added Data: ' + dataUser)
+// });
+//----------------------------------
 
 //=====Default route=====
 app.get('*', (req, res) =>{

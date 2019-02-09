@@ -1,7 +1,6 @@
 //DB references
 var mongoose = require("mongoose");
 
-
 //estructura
 var dataSchema = new mongoose.Schema({
 	author: {

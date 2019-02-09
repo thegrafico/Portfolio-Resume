@@ -9,7 +9,8 @@ var experienceModel = new mongoose.Schema({
    contact: String,
    description: String,
    workDate: {
-       type:Date
+       type:Date,
+       default: Date.now()
    },
    author: {
         id: {

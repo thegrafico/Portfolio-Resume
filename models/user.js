@@ -5,8 +5,14 @@ var passportLocalMongoose = require("passport-local-mongoose");
 
 //estructura en la DB
 var UserSchema = new mongoose.Schema({
-	username: String,
-	password: String
+	username: {
+		type:String,
+		unique: true
+	},
+	password: {
+		type:String,
+		minlength: 5
+	}
 });
 
 //es como un extends, ahora userSchema puede usar todos los metodos de lo que esta en ()
