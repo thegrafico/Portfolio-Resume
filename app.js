@@ -21,7 +21,7 @@ mongoose.connect(url, {useNewUrlParser: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-   console.log("Connected")
+    console.log("Connected")
   });
 //============================================================
 //Setup HBS
@@ -63,49 +63,68 @@ app.use(function(req, res, next){
 var resume      = require('./routes/resume'),
     portfolio   = require('./routes/portfolio');
 
-
 //using routes
 app.use('/', portfolio);
 app.use('/resume', resume);
 
-//--------------Addind new user----------------------
+//=====Default route=====
+app.get('*', (req, res) =>{
+    res.send('Page not Found');
+});
+// --------------Addind new user----------------------
+let id_ = "5c5f5e14c2219305e3e9c79f";
+var author = {
+    id: id_,
+    username:'thegrafico'
+}
+
 // var newUser = new User({
 //     username: 'thegrafico',
 //     password: '123456'
 // });
-
 // newUser.save((err, user)=>{
 //     if(err) return console.log(err)
 
 //     console.log(`Added User: ${user}`  )
 // });
-var author = {
-    id: '5c5ef04613379d493a1fb770',
-    username:'thegrafico'
-}
-Expe.create({
-    experience: 'Test1',
-    geoLocation: 'Where i working',
-    positionJob: 'Mannager',
-    contact: '787-377-6957',
-    description:'Tes2',
-    author
-}, (error,  expe)=>{
 
-    if(error) return console.log(error);
-    
-    var newData = new Data({
-        author,
-        introduction: 'HOLA SOY RAUL',
-        experience: expe
-    })
-    newData.save((err, dataUser) =>{
-        if (err) return console.log(err);
-    
-        console.log('Added Data: ' + dataUser)
-    });
-    
+// //REMOVE ELEMENT
+User.findById(id_, (err, ele)=>{
+   
+    if(err) return console.log("WHERE THE FUCK IS THE FUCKING ERROR");
+   
+    console.log(ele)
+   
+    ele.remove({"_id": id_});
 });
+
+
+// Expe.create({
+//     experience: 'Test1',
+//     geoLocation: 'Where i working',
+//     positionJob: 'Mannager',
+//     contact: '787-377-6957',
+//     description:'Tes2',
+//     author
+// }, (error,  expe)=>{
+
+//     if(error) return console.log(error);
+    
+//     var newData = new Data({
+//         author,
+//         introduction: 'HOLA SOY RAUL',
+//         experience: expe
+//     })
+//     newData.save((err, dataUser) =>{
+//         if (err) return console.log(err);
+    
+//         console.log('Added Data: ' + dataUser)
+//     }); 
+// });
+
+
+
+
 // dExpe.save((err, dataUser) =>{
 //         if (err) return console.log(err);
 //         console.log('Added Data: ' + dataUser)
@@ -123,15 +142,10 @@ Expe.create({
 
 //     console.log('Added Data: ' + dataUser)
 // });
-//----------------------------------
-
-//=====Default route=====
-app.get('*', (req, res) =>{
-    res.send('Page not Found');
-} )
 
 const port = 3000;
 /* === Export all of the functionality. === */
 app.listen(port, function(){
 	console.log(`Server Init on port ${port}`);
 });
+

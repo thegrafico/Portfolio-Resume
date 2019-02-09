@@ -15,9 +15,15 @@ var UserSchema = new mongoose.Schema({
 	}
 });
 
+// without arrow function
+UserSchema.pre('remove', function(next){
+	console.log(this);
+	next();
+});
+
+
 //es como un extends, ahora userSchema puede usar todos los metodos de lo que esta en ()
 UserSchema.plugin(passportLocalMongoose);
-
 
 //El return
 module.exports = mongoose.model("User", UserSchema);
