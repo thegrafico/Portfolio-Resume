@@ -72,8 +72,8 @@ app.get('*', (req, res) =>{
     res.send('Page not Found');
 });
 // --------------Addind new user----------------------
-let id_ = "5c60986337f607520dfae591";
-let x = 3;
+let id_ = "5c61a515611b3f53666861aa";
+let x = 4;
 var author = {
     id: id_,
     username:'thegrafico'
@@ -108,12 +108,12 @@ if(x == 1){
         })
         newData.save((err, dataUser) =>{
             if (err) return console.log(err);
-            console.log(expe);
+            // console.log(expe);
             console.log('Added Data: ' + dataUser);
         }); 
     });
 
-}else{
+}else if(x == 3){
     // REMOVE ELEMENT
     User.findById(id_, (err, ele)=>{
     

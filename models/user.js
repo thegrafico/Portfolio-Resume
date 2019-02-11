@@ -21,28 +21,15 @@ var userData 		= require('./data'),
 // without arrow function
 UserSchema.pre('remove', async function(next){
 
-	await userExperience.find({'author.id': this._id}, function(err, exp){
-		if(err) return console.log(err);
-
-		//there are objects
-		if(exp.length > 0){
-			exp.remove();
-		}else
-			console.log('There are not objects');
+	userExperience.deleteMany({'author.id': this._id}, function(err, exp){
+		console.log(exp);
 	});
 
-	await userData.find({'author.id': this._id}, function(err, data){
-		if(err) return console.log(err);
-
-		if(data.length > 0){
-			data.remove();
-		}else
-			console.log('There are not objects');
-			
+	userData.deleteMany({'author.id': this._id}, function(err, exp){
+		console.log(exp);
 	});
 	next();
 });
-
 
 //es como un extends, ahora userSchema puede usar todos los metodos de lo que esta en ()
 UserSchema.plugin(passportLocalMongoose);
