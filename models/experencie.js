@@ -8,10 +8,7 @@ var experienceModel = new mongoose.Schema({
    positionJob: String,
    contact: String,
    description: String,
-   workDate: {
-       type:Date,
-       default: Date.now()
-   },
+   workDate: String,
    author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
@@ -20,6 +17,5 @@ var experienceModel = new mongoose.Schema({
         username: String
     }
 });
-
 
 module.exports = mongoose.model("Experience", experienceModel);

@@ -15,9 +15,31 @@ var UserSchema = new mongoose.Schema({
 	}
 });
 
+var userData 		= require('./data'),
+	userExperience 	= require('./experencie');
+
 // without arrow function
-UserSchema.pre('remove', function(next){
-	console.log(this);
+UserSchema.pre('remove', async function(next){
+
+	await userExperience.find({'author.id': this._id}, function(err, exp){
+		if(err) return console.log(err);
+
+		//there are objects
+		if(exp.length > 0){
+			exp.remove();
+		}else
+			console.log('There are not objects');
+	});
+
+	await userData.find({'author.id': this._id}, function(err, data){
+		if(err) return console.log(err);
+
+		if(data.length > 0){
+			data.remove();
+		}else
+			console.log('There are not objects');
+			
+	});
 	next();
 });
 
