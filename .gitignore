@@ -1,3 +1,2 @@
-node_modules
-package-lock.json
-test-file.js
+./node_modules/
+./test-file.js
