@@ -1,2 +1,2 @@
-./node_modules/
-./test-file.js
+node_modules/
+test_file.js
