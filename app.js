@@ -18,12 +18,11 @@ const port = process.env.PORT || 3000;
 const dbName = 'Portfolio';
 const url = `mongodb://localhost:27017/${dbName}`;
 
-mongoose.connect(url, {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || url, {useNewUrlParser: true});
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-    console.log("Connected")
-  });
+db.once('open', function() { console.log("Connected");});
 //============================================================
 //Setup HBS
 app.set('view engine', 'hbs');
@@ -70,7 +69,7 @@ app.use('/resume', resume);
 
 //=====Default route=====
 app.get('*', (req, res) =>{
-    res.send('Page not Found');
+    res.send("The 'Not page found' is under development");
 });
 
 /* === Export all of the functionality. === */
