@@ -1,10 +1,10 @@
 {
   "name": "resume",
   "version": "1.0.0",
-  "description": "Rusume and porfolio node page",
+  "description": "Rusume and portfolio node page",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "Raul Pichardo",
   "license": "ISC",

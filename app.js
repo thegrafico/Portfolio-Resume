@@ -12,6 +12,7 @@ const express           = require('express'),
 //App
 var app = express();
 
+const port = process.env.PORT || 3000;
 
 //===================DB connection===================================
 const dbName = 'Portfolio';
@@ -71,60 +72,7 @@ app.use('/resume', resume);
 app.get('*', (req, res) =>{
     res.send('Page not Found');
 });
-// --------------Addind new user----------------------
-let id_ = "5c61a515611b3f53666861aa";
-let x = 4;
-var author = {
-    id: id_,
-    username:'thegrafico'
-}
-if(x == 1){
-    var newUser = new User({
-        username: 'thegrafico',
-        password: '123456'
-    });
-    newUser.save((err, user)=>{
-        if(err) return console.log(err)
-    
-        console.log(`Added User: ${user}`  )
-    });
-}else if(x == 2){
 
-    Expe.create({
-        experience: 'Test1',
-        geoLocation: 'Where i working',
-        positionJob: 'Mannager',
-        contact: '787-377-6957',
-        description:'Tes2',
-        author
-    }, (error,  expe)=>{
-
-        if(error) return console.log(error);
-        
-        var newData = new Data({
-            author,
-            introduction: 'HOLA SOY RAUL',
-            experience: expe
-        })
-        newData.save((err, dataUser) =>{
-            if (err) return console.log(err);
-            // console.log(expe);
-            console.log('Added Data: ' + dataUser);
-        }); 
-    });
-
-}else if(x == 3){
-    // REMOVE ELEMENT
-    User.findById(id_, (err, ele)=>{
-    
-        if(err) return console.log("WHERE THE FUCK IS THE FUCKING ERROR");
-    
-        ele.remove({"_id": id_});
-    });    
-}
-
-
-const port = 3000;
 /* === Export all of the functionality. === */
 app.listen(port, function(){
 	console.log(`Server Init on port ${port}`);
